@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Termo de Adesão para Voluntário</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div class="headerImage">
+          <img
+            src="./images/brasaooficialcolorido.png"
+            alt="Brasão da República Federativa do Brasil, com estrelas, ramos de café e tabaco, espada e o lema 'República Federativa do Brasil"
+          />
+        </div>
+        <div class="headerText">
+          <p>Ministério da Educação</p>
+          <p>Universidade Tecnológica Federal do Paraná</p>
+          <p>Diretoria de Relações Empresariais e Comunitárias</p>
+          <p>Departamento de Extensão</p>
+        </div>
+        <div class="headerImage">
+          <img
+            src="./images/logo.png"
+            alt="Logotipo da UTFPR - Universidade Tecnológica Federal do Paraná"
+          />
+        </div>
+      </div>
+      <div class="docTitle">
+        <h3>TERMO DE ADESÃO PARA VOLUNTÁRIO(A)</h3>
+      </div>
+      <div class="dadosInstituicao">
+        <div class="dadosInstituicaoTitulo">
+          <span>Dados da Instituição</span>
+        </div>
+        <div class="instituicao">
+          <span>Instituição: </span>
+          <span>{{termo.instituicao}}</span>
+        </div>
+        <div class="campus">
+          <span>Câmpus: </span>
+          <span>{{termo.campus}}</span>
+        </div>
+      </div>
+      <div class="dadosAcao">
+        <div class="dadosAcaoTitulo">
+          <span>Dados da ação</span>
+        </div>
+        <div class="dadosAcaoInfo">
+          <span>Título da ação: </span>
+          <span class="tituloAcao">{{termo.tituloDaAcao}}</span>
+        </div>
+        <div class="modalidade">
+          <div class="modalidadeTitulo">
+            <span>Modalidade:</span>
+          </div>
+          <div class="modalidadeOpcoes">
+            <span>{{modalidade.programa}} programa</span>
+            <span>{{modalidade.projeto}} projeto</span>
+            <span>{{modalidade.evento}} evento</span>
+            <span>{{modalidade.curso}} curso</span>
+          </div>
+        </div>
+        <div class="linhaVigencia">
+          <div class="tituloVigencia">
+            <span>Vigência</span>
+          </div>
+          <div class="inicioVigencia">
+            <span>Inicio: </span>
+            <span>{{termo.dataDeInicio}}</span>
+          </div>
+          <div class="terminoVigencia">
+            <span>Término: </span>
+            <span>{{termo.dataDeTermino}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="dadosCoordenacao">
+        <div class="dadosCoordenacaoTitulo">
+          <span>Dados da coordenação da ação</span>
+        </div>
+        <div class="coordenacaoNomeRow">
+          <span>Nome:</span>
+          <span class="coordenacaoNome">{{termo.nomeCoordenacao}}</span>
+        </div>
+        <div class="cpfDepRow">
+          <div class="cpfBox">
+            <span>CPF: </span>
+            <span class="cpf">{{termo.cpfCoordenacao}}</span>
+          </div>
+          <div class="depBox">
+            <span>Departamento: </span>
+            <span class="departamento">{{termo.departamento}}</span>
+          </div>
+        </div>
+        <div class="foneEmailRow">
+          <div class="foneBox">
+            <span>Fone: </span>
+            <span>{{termo.telefoneCoordenacao}}</span>
+          </div>
+          <div class="emailBox">
+            <span>Email: </span>
+            <span>{{termo.emailCoordenacao}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="dadosVoluntario">
+        <div class="dadosVoluntarioTitulo">
+          <span>Dados do(a) Voluntário(a)</span>
+        </div>
+        <div class="nomeNascRow">
+          <div class="nomeBox">
+            <span>Nome: </span>
+            <span>{{aluno.nome}}</span>
+          </div>
+          <div class="nascBox">
+            <span>Data nascimento: </span>
+            <span>{{aluno.dataDeNascimento}}</span>
+          </div>
+        </div>
+        <div class="cpfNacioRow">
+          <div class="cpfVolBox">
+            <span>CPF: </span>
+            <span>{{aluno.cpf}}</span>
+          </div>
+          <div class="nacioBox">
+            <span>Nacionalidade: </span>
+            <span>Brasileiro</span>
+          </div>
+        </div>
+        <div class="eEstudanteRow">
+          <span>É estudante da UTFPR: </span>
+          <span class="eEstudanteOpcao">{{estudante.sim}} Sim </span>
+          <span class="eEstudanteOpcao">{{estudante.nao}} Não </span>
+        </div>
+        <div class="curPerRaRow">
+          <div class="curBox">
+            <span>Curso: </span>
+            <span>{{aluno.curso}}</span>
+          </div>
+          <div class="perBox">
+            <span>Período: </span>
+            <span>{{aluno.periodo}}</span>
+          </div>
+          <div class="raBox">
+            <span>RA: </span>
+            <span>{{aluno.ra}}</span>
+          </div>
+        </div>
+        <div class="enderecoRow">
+          <span>Endereço: </span>
+          <span>{{aluno.endereco}}</span>
+        </div>
+        <div class="cidEstRow">
+          <div class="cidBox">
+            <span>Cidade: </span>
+            <span>{{aluno.cidade}}</span>
+          </div>
+          <div class="estBox">
+            <span>Estado: </span>
+            <span>{{aluno.estado}}</span>
+          </div>
+        </div>
+        <div class="foneEmailVolRow">
+          <div class="foneBoxVol">
+            <span>Fone: </span>
+            <span>{{aluno.telefone}}</span>
+          </div>
+          <div class="emailBoxVol">
+            <span>Email: </span>
+            <span>{{aluno.email}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="sintese">
+        <div class="sinteseTitulo">
+          <span
+            >Síntese das atividades a serem desenvolvidas pelo(a)
+            voluntário(a)</span
+          >
+        </div>
+        {{atividades}}
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page">
+      <div>
+        <div class="condicoesGerais">
+          <h3 class="docTitle">Condições Gerais</h3>
+          {{condicoesGerais}}
+        </div>
+      </div>
+      <div class="locDataRow">
+        <div class="locBox">
+          <span>Local: </span>
+          <span>{{termo.campus}}</span>
+        </div>
+        <div class="dataBox">
+          <span>Data: </span>
+          <span>{{dataAtual}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="aceiteConcordanciaTitle">
+        <h3>ACEITE E CONCORDÂNCIA</h3>
+        <p>
+          (Este documento deverá ser assinado pelo voluntário(a), pela
+          coordenação da ação e pela Diretoria de Relações Empresariais e
+          Comunitárias, sendo uma cópia arquivada na DIREC).
+        </p>
+      </div>
+      <div class="voCooDiBox">
+        <div class="voluntarioRow">
+          <div class="voluntarioBox"><span>Voluntário(a)</span></div>
+        </div>
+        <div class="coordenacaoRow">
+          <div class="coordenacaoBox"><span>Coordenação da ação</span></div>
+        </div>
+        <div class="direcRow">
+          <div class="direcBox"><span>DIREC</span></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
