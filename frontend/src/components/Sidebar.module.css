@@ -1,5 +1,5 @@
 .container{
-    background-color: #E1EBF2;
+    background-color: #a3e7ff;
     display: flex;
     flex-direction: column;
     width: 350px;
@@ -13,7 +13,7 @@
 }
 
 .title{
-    border-left: 5px solid #1E90FF;
+    border-left: 5px solid #ff3030;
 }
 
 .title h1{
@@ -70,7 +70,7 @@
 }
 
 .imagem{
-    width: 200px;
+    width: 350px;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -78,7 +78,7 @@
 }
 
 .active button {
-    background-color: #F79335;
+    background-color: #fadd4d;
 }
 
 .active button:hover{

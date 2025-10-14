@@ -35,7 +35,7 @@ function Home() {
               <i className={styles.iconTermo}><PiCertificateLight /></i>
             </div>
             <div className={styles.text}>
-              <p>Termos de voluntário</p>
+              <p>Total de simulados</p>
             </div>
             <div className={styles.count}>
               <strong>{totalTermos}</strong>
@@ -47,7 +47,7 @@ function Home() {
               <i className={styles.iconAluno}><PiStudent /></i>
             </div>
             <div className={styles.text}>
-              <p>Alunos</p>
+              <p>Simulados concluídos</p>
             </div>
             <div className={styles.count}>
               <strong>{totalAlunos}</strong>

@@ -13,7 +13,7 @@ function Alunos() {
         <div className={styles.container}>
             <div className={styles.box1}>
                 <div className={styles.title}>
-                    <h1>ELLP</h1>
+                    <h1>SCAR-I</h1>
                 </div>
             </div>
             <div className={styles.box2}>
@@ -29,7 +29,7 @@ function Alunos() {
                     <button>
                         <span>
                             <i className={styles.icon}><PiCertificateLight /></i>
-                            <span className={styles.option}>Termos</span>
+                            <span className={styles.option}>Simulados</span>
                         </span>
                     </button>
                 </NavLink>
@@ -37,7 +37,7 @@ function Alunos() {
                     <button>
                         <span>
                             <i className={styles.icon}><PiStudent /></i>
-                            <span className={styles.option}>Alunos</span>
+                            <span className={styles.option}>Avaliações</span>
                         </span>
                     </button>
                 </NavLink>
@@ -45,7 +45,7 @@ function Alunos() {
                     <button>
                         <span>
                             <i className={styles.icon}><FaRegFilePdf /></i>
-                            <span className={styles.option}>Gerar PDF</span>
+                            <span className={styles.option}>Dowload</span>
                         </span>
                     </button>
                 </NavLink>
