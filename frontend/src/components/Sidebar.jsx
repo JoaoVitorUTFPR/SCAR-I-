@@ -1,8 +1,8 @@
 import styles from './Sidebar.module.css'; 
-import { IoHomeOutline } from "react-icons/io5";
-import { PiCertificateLight } from "react-icons/pi";
-import { PiStudent } from "react-icons/pi";
-import { FaRegFilePdf } from "react-icons/fa6";
+import homeIcon from '../assets/homeIcon.png';
+import termosIcon from '../assets/simuladosIcon.png';
+import alunoIcon from '../assets/avaliacaoIcon.png';
+import downloadIcon from '../assets/downloadIcon.png';
 import ellp from '../assets/ellp.png'
 import { NavLink } from 'react-router-dom';
 

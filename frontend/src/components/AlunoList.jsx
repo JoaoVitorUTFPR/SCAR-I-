@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import ConfirmDialog from "./ConfirmDialog";
 import styles from "./AlunoList.module.css";
 
-function AlunoList() {
+function SimuladoList() {
   const [alunos, setAlunos] = useState([]);
   const [editando, setEditando] = useState(null);
   const [modalAberto, setModalAberto] = useState(false);
