@@ -2,7 +2,7 @@ import styles from "./Termos.module.css";
 import Sidebar from "../components/Sidebar";
 import TermoList from "../components/TermoList";
 
-function Termos() {
+function Simulados(){
   return (
     <>
       <div className={styles.container}>

@@ -1,7 +1,7 @@
 import styles from './Sidebar.module.css'; 
 import homeIcon from '../assets/homeIcon.png';
-import termosIcon from '../assets/simuladosIcon.png';
-import alunoIcon from '../assets/avaliacaoIcon.png';
+import simuladosIcon from '../assets/simuladosIcon.png';
+import avaliacaoIcon from '../assets/avaliacaoIcon.png';
 import downloadIcon from '../assets/downloadIcon.png';
 import ellp from '../assets/ellp.png'
 import { NavLink } from 'react-router-dom';
@@ -25,7 +25,7 @@ function Alunos() {
                         </span>
                     </button>
                 </NavLink>
-                <NavLink to="/termos" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
+                <NavLink to="/simulados" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
                             <i className={styles.icon}><PiCertificateLight /></i>
@@ -33,7 +33,7 @@ function Alunos() {
                         </span>
                     </button>
                 </NavLink>
-                <NavLink to="/alunos" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> 
+                <NavLink to="/avaliacao" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> 
                     <button>
                         <span>
                             <i className={styles.icon}><PiStudent /></i>
@@ -41,11 +41,11 @@ function Alunos() {
                         </span>
                     </button>
                 </NavLink>
-                <NavLink to="/emissao" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
+                <NavLink to="/download" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
                             <i className={styles.icon}><FaRegFilePdf /></i>
-                            <span className={styles.option}>Dowload</span>
+                            <span className={styles.option}>Download</span>
                         </span>
                     </button>
                 </NavLink>

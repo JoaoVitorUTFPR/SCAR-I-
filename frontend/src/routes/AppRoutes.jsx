@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import Alunos from '../pages/Alunos';
-import Termos from '../pages/Termos';
-import Emissao from '../pages/Emissao';
+import Avaliacao from '../pages/Avaliacao';
+import Simulados from '../pages/Simulados';
+import Dowload  from '../pages/Download';
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/alunos" element={<Alunos />} />
-        <Route path="/termos" element={<Termos />} />
-        <Route path="/emissao" element={<Emissao />} />
+        <Route path="/Avaliacao" element={<Avaliacao/>} />
+        <Route path="/Simulados" element={<Simualados />} />
+        <Route path="/Download" element={<Dowload />} />
       </Routes>
     </BrowserRouter>
   );
