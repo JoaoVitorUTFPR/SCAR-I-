@@ -8,3 +8,12 @@ export const getSimulado = async(req, res) =>{
         res.status(500).json({ message: "Erro", error });
     }
 };
+
+export const getSimuladoId = async(req, res) =>{
+    try{
+        const simulado = await simuladoService.getSimuladoId(req.params.id);
+            res.status(200).json(simulado);
+    }catch{
+        res.status(500).json({ message: "Erro", error });
+    }
+}
