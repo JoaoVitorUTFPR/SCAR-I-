@@ -28,6 +28,8 @@ model Usuario_simulado{
   simuladoId        String   @db.ObjectId
   simulado          Simulado @relation(fields: [simuladoId], references: [id], onDelete: NoAction)
 
+  dataInicio        DateTime  @default(now())
+  dataFim           DateTime?  
   resposta          Resposta[]
 }
 
@@ -49,7 +51,7 @@ model Questao {
 
 type Resposta{
   questaoId         String @db.ObjectId
-  alternativaId     String @db.ObjectId
+  alternativaId     String? @db.ObjectId
 }
 
 model Alternativa {
