@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get("/simulado", simuladoController.getSimulado);
 router.get("/simulado/:id", simuladoController.getSimuladoId);
+router.post("/usuario_simulado/:usuarioId/:simuladoId", simuladoController.createUsuarioSimulado);
 
 export default router;

@@ -17,3 +17,12 @@ export const getSimuladoId = async(req, res) =>{
         res.status(500).json({ message: "Erro", error });
     }
 }
+
+export const createUsuarioSimulado = async(req, res) =>{
+    try{
+        const simulado = await simuladoService.createUsuarioSimulado(req.params.usuarioId,req.params.simuladoId);
+            res.status(200).json(simulado);
+    }catch(error){
+        res.status(500).json({ message: "Erro", error });
+    }
+}
