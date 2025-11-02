@@ -11,10 +11,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^1.28.0",
     "@prisma/client": "^6.7.0",
     "archiver": "^7.0.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "ollama": "^0.6.2",
     "puppeteer": "^24.9.0"
   },
   "devDependencies": {

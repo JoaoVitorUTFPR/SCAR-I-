@@ -10,6 +10,13 @@ export const createAluno = (aluno) =>
     body: JSON.stringify(aluno),
   }).then((res) => res.json());
 
+export const getSimulado = (simulado) =>
+  fetch(`${API_URL}/simulado`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(simulado),
+  }).then((res) => res.json());
+
 export const updateAluno = (id, aluno) =>
   fetch(`${API_URL}/alunos/${id}`, {
     method: "PUT",
