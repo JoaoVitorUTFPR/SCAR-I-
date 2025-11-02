@@ -1,14 +1,10 @@
 const API_URL = "http://localhost:3000";
 
-export const getAlunos = () =>
-  fetch(`${API_URL}/alunos`).then((res) => res.json());
+export const getSimulado = () =>
+  fetch(`${API_URL}/simulado`).then((res) => res.json());
 
-export const createAluno = (aluno) =>
-  fetch(`${API_URL}/alunos`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(aluno),
-  }).then((res) => res.json());
+export const getSimuladoId = (id) =>
+  fetch(`${API_URL}/simulado/${id}`).then((res) => res.json());
 
 export const getInfoHome = (id) =>
   fetch(`${API_URL}/home/${id}`, {
@@ -16,14 +12,17 @@ export const getInfoHome = (id) =>
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 
-export const updateAluno = (id, aluno) =>
-  fetch(`${API_URL}/alunos/${id}`, {
-    method: "PUT",
+export const updateALternativa = (body) =>
+  fetch(`${API_URL}/usuario_simulado/alternativa`, {
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(aluno),
+    body: JSON.stringify(body),
   }).then((res) => res.json());
 
-export const deleteAluno = (id) =>
-  fetch(`${API_URL}/alunos/${id}`, {
-    method: "DELETE",
+export const createUsuarioSimulado = (usuarioId,simuladoId) =>
+  fetch(`${API_URL}/usuario_simulado/${usuarioId}/${simuladoId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
+
+

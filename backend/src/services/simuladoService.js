@@ -6,7 +6,7 @@ import { prompt } from "../prompt/prompt.js";
 const prisma = new PrismaClient();
 
 export const getSimulado = () => {
-  return prisma.simulado.findMany({});
+  return prisma.simulado.findMany({include: {questoes: true}});
 };
 
 export const getSimuladoId = (simuladoId) => {
@@ -18,15 +18,34 @@ export const getSimuladoId = (simuladoId) => {
 }
 
 export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
-  const simulado = await getSimuladoId(simuladoId);
-  const respostas = simulado.questoes.map(questao => { return { questaoId: questao.id, alternativaId: null } });
-  const usuario_simulado = {
-    usuarioId,
-    simuladoId,
-    resposta: respostas
-  };
-  return prisma.usuario_simulado.create({ data: usuario_simulado });
-}
+    let usuarioSimulado = await prisma.usuario_simulado.findFirst({
+        where: {
+            usuarioId,
+            simuladoId,
+        },
+        include: {
+            simulado: { include: { questoes: { include: { alternativa: true } } } },
+        },
+    });
+    if (!usuarioSimulado) {
+        const simulado = await getSimuladoId(simuladoId);
+        const respostas = simulado.questoes.map((questao) => {
+            return { questaoId: questao.id, alternativaId: null };
+        });
+        const usuario_simulado = {
+            usuarioId,
+            simuladoId,
+            resposta: respostas,
+        };
+        usuarioSimulado = prisma.usuario_simulado.create({
+            data: usuario_simulado,
+            include: {
+                simulado: { include: { questoes: { include: { alternativa: true } } } },
+            },
+        });
+    }
+    return usuarioSimulado;
+};
 
 export const updateAlternativa = async (body) => {
   const usuarioSimulado = await prisma.usuario_simulado.findUnique({

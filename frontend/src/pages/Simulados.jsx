@@ -1,6 +1,6 @@
 import styles from "./Simulados.module.css";
-import Sidebar from "../components/Sidebar";/* 
-import TermoList from "../components/TermoList"; */
+import Sidebar from "../components/Sidebar"; 
+import SimuladoList from "../components/simuladoList";
 
 function Simulados(){
   return (
@@ -8,7 +8,7 @@ function Simulados(){
       <div className={styles.container}>
         <Sidebar />
         <div className={styles.content}>
-          {/* <TermoList /> */}
+          {<SimuladoList/>}
         </div>
       </div>
     </>
