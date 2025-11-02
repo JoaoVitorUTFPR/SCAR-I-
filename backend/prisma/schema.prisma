@@ -13,69 +13,70 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario{
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+model Usuario {
+  id                String             @id @default(auto()) @map("_id") @db.ObjectId
+  nome              String
   email             String
   senha             String
   usuario_simulados Usuario_simulado[]
 }
 
-model Usuario_simulado{
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  usuarioId         String   @db.ObjectId
-  usuario           Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+model Usuario_simulado {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  usuarioId String  @db.ObjectId
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
-  simuladoId        String   @db.ObjectId
-  simulado          Simulado @relation(fields: [simuladoId], references: [id], onDelete: NoAction)
+  simuladoId String   @db.ObjectId
+  simulado   Simulado @relation(fields: [simuladoId], references: [id], onDelete: NoAction)
 
-  dataInicio        DateTime  @default(now())
-  dataFim           DateTime?  
-  resposta          Resposta[]
+  dataInicio DateTime   @default(now())
+  dataFim    DateTime?
+  resposta   Resposta[]
 }
 
 model Simulado {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  nome              String
-  instituicao       String
-  simulado_usuario  Usuario_simulado[]
-  questoes          Questao[]
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  nome             String
+  instituicao      String
+  simulado_usuario Usuario_simulado[]
+  questoes         Questao[]
 }
 
 model Questao {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId 
-  corpo             String
-  simuladoId        String   @db.ObjectId
-  simulado          Simulado @relation(fields: [simuladoId], references: [id], onDelete: NoAction)
-  alternativa       Alternativa[]    
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  corpo       String
+  simuladoId  String        @db.ObjectId
+  simulado    Simulado      @relation(fields: [simuladoId], references: [id], onDelete: NoAction)
+  alternativa Alternativa[]
 }
 
-type Resposta{
-  questaoId         String @db.ObjectId
-  alternativaId     String? @db.ObjectId
+type Resposta {
+  questaoId     String  @db.ObjectId
+  alternativaId String? @db.ObjectId
 }
 
 model Alternativa {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId 
-  corpo             String
-  questaoId         String   @db.ObjectId
-  questao           Questao @relation(fields: [questaoId], references: [id], onDelete: NoAction)
-  isCorreta         Boolean
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  corpo     String
+  questaoId String  @db.ObjectId
+  questao   Questao @relation(fields: [questaoId], references: [id], onDelete: NoAction)
+  isCorreta Boolean
 }
 
 model Aluno {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  nome              String
-  cpf               String   @unique
-  dataDeNascimento  DateTime
-  estudanteDaUtfpr  Boolean
-  curso             String
-  periodo           Int
-  ra                String
-  endereco          String
-  cidade            String
-  estado            String
-  telefone          String
-  email             String   @unique
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome             String
+  cpf              String   @unique
+  dataDeNascimento DateTime
+  estudanteDaUtfpr Boolean
+  curso            String
+  periodo          Int
+  ra               String
+  endereco         String
+  cidade           String
+  estado           String
+  telefone         String
+  email            String   @unique
 }
 
 model Termo {
