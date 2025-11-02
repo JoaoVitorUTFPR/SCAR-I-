@@ -25,4 +25,10 @@ export const createUsuarioSimulado = (usuarioId,simuladoId) =>
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 
+export const finalizarSimulado = (usuarioId) =>
+  fetch(`${API_URL}/usuario_simulado/finalizar/${usuarioId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => res.json());
+
 

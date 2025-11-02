@@ -1,6 +1,6 @@
 import styles from "./Avaliacao.module.css";
 import Sidebar from "../components/Sidebar";
-import { createUsuarioSimulado, getSimuladoId } from "../services/simuladoService";
+import { createUsuarioSimulado, finalizarSimulado, getSimuladoId } from "../services/simuladoService";
 import { useEffect, useState } from "react";
 import Questao from "../components/Questao";
 import { useParams } from "react-router-dom";
@@ -34,9 +34,10 @@ function Avaliacao(){
             <div>
                 {simulado?.questoes?.map((questao, index) =>(
                     <div key = {index}>
-                        {<Questao resposta = {respostas.find(r => r.questaoId === questao.id)} questao={questao} numero={index+1}/>}
+                        {<Questao resposta = {respostas.find(r => r.questaoId === questao.id)} questao={questao} numero={index+1} usuarioSimuladoId={usuarioSimuladoId}/>}
                     </div>
                 ))}
+                <button onClick={()=>finalizarSimulado(usuarioSimuladoId)}>Finalizar</button>
             </div>
         </div>
         </div>
