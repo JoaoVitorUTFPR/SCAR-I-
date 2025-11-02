@@ -158,3 +158,16 @@ export const getRelatorio = async (usuarioSimuladoId) => {
   )
   return resultado;
 };
+
+export const getInfoHome = async (id) => {
+    const totalSimulados = await prisma.simulado.count();
+    const totalConcluidos = await prisma.usuario_simulado.count({
+        where: {
+          usuarioId: id,
+          dataFim: {
+                not: null,
+            },
+        },
+    });
+    return { totalSimulados, totalConcluidos };
+};

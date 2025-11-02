@@ -4,7 +4,7 @@
 
 }
 
-.cardAluno{
+.cardSimuladoTotal{
   display: flex;
   flex-direction: column;
   background-color: #f0f9ff;
@@ -15,7 +15,7 @@
   margin-right: 40px;
 }
 
-.cardTermo{
+.cardSimuladoConcluido{
   display: flex;
   flex-direction: column;
   background-color: #fef6fb;
@@ -57,14 +57,14 @@
   padding-right: 30px;
 }
 
-.iconAluno{
+.iconTotal{
   font-size: 60px;
   color: #74c1ed;
   margin-top: 100px;
   margin-left: 30px;
 }
 
-.iconTermo{
+.iconConcluido{
   font-size: 60px;
   color: #ee95c5;
   margin-top: 150px;

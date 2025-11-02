@@ -5,6 +5,7 @@ import avaliacaoIcon from '../assets/avaliacaoIcon.png';
 import downloadIcon from '../assets/downloadIcon.png';
 import ellp from '../assets/ellp.png'
 import { NavLink } from 'react-router-dom';
+import { PiCertificateLight, PiFilePdf, PiHouse, PiStudent } from 'react-icons/pi';
 
 function Alunos() {
 
@@ -20,7 +21,7 @@ function Alunos() {
                 <NavLink to="/" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
-                            <i className={styles.icon}><IoHomeOutline /></i>
+                            <i className={styles.icon}><PiHouse /></i>
                             <span className={styles.option}>Home</span>
                         </span>
                     </button>
@@ -44,7 +45,7 @@ function Alunos() {
                 <NavLink to="/download" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
-                            <i className={styles.icon}><FaRegFilePdf /></i>
+                            <i className={styles.icon}><PiFilePdf /></i>
                             <span className={styles.option}>Download</span>
                         </span>
                     </button>

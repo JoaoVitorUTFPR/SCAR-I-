@@ -11,5 +11,6 @@ router.patch("/usuario_simulado/finalizar/:usuarioSimuladoId", simuladoControlle
 router.get("/usuario_simulado/:usuarioId", simuladoController.getSimuladosUsuario);
 router.get("/usuario_simulado/nota/:usuarioSimuladoId", simuladoController.calcularNota);
 router.get("/usuario_simulado/relatorio/:usuarioSimuladoId", simuladoController.getRelatorio);
+router.get("/home/:id", simuladoController.getInfoHome);
 
 export default router;
