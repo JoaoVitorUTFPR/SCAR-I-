@@ -3,19 +3,18 @@ import styles from './Home.module.css';
 import Sidebar from '../components/Sidebar';
 import { PiStudent } from "react-icons/pi";
 import { PiCertificateLight } from "react-icons/pi";
-import { getAlunos } from '../services/alunoService';
-import { getTermos } from '../services/termoService';
+/* import { getAvaliacoes } from '../services/simuladoService'; */
 
 function Home() {
-  const [totalAlunos, setTotalAlunos] = useState(0);
+  const [totalAvaliacoes, setTotalAvaliacoes] = useState(0);
   const [totalTermos, setTotalTermos] = useState(0);
 
-  useEffect(() => {
+/*   useEffect(() => {
     async function fetchData() {
       try {
-        const alunos = await getAlunos();
+        const avaliacoess = await getAvaliacoes();
         const termos = await getTermos();
-        setTotalAlunos(alunos.length);
+        setTotalAvaliacoes(avaliacoess.length);
         setTotalTermos(termos.length);
       } catch (error) {
         console.error("Erro ao carregar dados:", error);
@@ -23,7 +22,7 @@ function Home() {
     }
 
     fetchData();
-  }, []);
+  }, []); */
 
   return (
     <div className={styles.container}>
@@ -50,7 +49,7 @@ function Home() {
               <p>Simulados concluídos</p>
             </div>
             <div className={styles.count}>
-              <strong>{totalAlunos}</strong>
+              <strong>{totalAvaliacoes}</strong>
             </div>
           </div>
         </div>

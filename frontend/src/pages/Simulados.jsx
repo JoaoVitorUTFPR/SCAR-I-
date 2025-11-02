@@ -1,6 +1,6 @@
-import styles from "./Termos.module.css";
-import Sidebar from "../components/Sidebar";
-import TermoList from "../components/TermoList";
+import styles from "./Simulados.module.css";
+import Sidebar from "../components/Sidebar";/* 
+import TermoList from "../components/TermoList"; */
 
 function Simulados(){
   return (
@@ -8,11 +8,11 @@ function Simulados(){
       <div className={styles.container}>
         <Sidebar />
         <div className={styles.content}>
-          <TermoList />
+          {/* <TermoList /> */}
         </div>
       </div>
     </>
   );
 }
 
-export default Termos;
+export default Simulados;
