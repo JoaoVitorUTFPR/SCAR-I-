@@ -1,11 +1,13 @@
 const API_URL = "http://localhost:3000";
 
 export const fazerLogin = async (loginInfo) => {
+	let data = {};
 	fetch(`${API_URL}/login`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(loginInfo),
-	}).then((res) => res.json());
+	}).then((res) => (data = res.json()));
+	return data.token;
 };
 
 export const fazerRegistro = async (registroInfo) => {

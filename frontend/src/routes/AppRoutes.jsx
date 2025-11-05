@@ -4,6 +4,7 @@ import Simulados from '../pages/Simulados';
 import Avaliacao from '../pages/Avaliacao';
 import { Login } from '../pages/Login';
 import { Registro } from '../pages/Registro';
+import { ProtectedRoute } from './ProtectedRoute';
 
 export default function AppRoutes() {
   return (
@@ -11,9 +12,15 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/registrar" element={<Registro/>}></Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/simulados" element={<Simulados />} />
-        <Route path="/avaliacao/:simuladoId" element={<Avaliacao />} />
+        <ProtectedRoute>
+          <Route path="/" element={<Home />} />
+        </ProtectedRoute>
+        <ProtectedRoute>
+          <Route path="/simulados" element={<Simulados />} />
+        </ProtectedRoute>
+        <ProtectedRoute>
+          <Route path="/avaliacao/:simuladoId" element={<Avaliacao />} />
+        </ProtectedRoute>
       </Routes>
     </BrowserRouter>
   );
