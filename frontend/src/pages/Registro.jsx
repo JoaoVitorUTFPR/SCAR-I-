@@ -1,4 +1,11 @@
+import { useState } from "react";
+import { fazerRegistro } from "../services/authService";
+import { useNavigate } from "react-router-dom";
+
+
 export const Registro = () => {
+
+    const navigate = useNavigate();
 
     const [registroInfo, setRegistroInfo] = useState({
         email: '',
@@ -11,10 +18,13 @@ export const Registro = () => {
             [e.target.name]: e.target.value
         });
     }
-    const efetivarRegistro = () => {
+    const efetivarRegistro = async () => {
         
-        const usuario = fazerRegistro(registroInfo);
-        window.location.href = "/login";
+        const usuario = await fazerRegistro(registroInfo);
+        if(usuario){
+            navigate("/login")
+        }
+
     }
 
     return (
