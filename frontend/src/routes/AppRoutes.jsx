@@ -12,15 +12,11 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/registrar" element={<Registro/>}></Route>
         <Route path="/login" element={<Login />} />
-        <ProtectedRoute>
+        <Route element={<ProtectedRoute/>}>
           <Route path="/" element={<Home />} />
-        </ProtectedRoute>
-        <ProtectedRoute>
           <Route path="/simulados" element={<Simulados />} />
-        </ProtectedRoute>
-        <ProtectedRoute>
           <Route path="/avaliacao/:simuladoId" element={<Avaliacao />} />
-        </ProtectedRoute>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
