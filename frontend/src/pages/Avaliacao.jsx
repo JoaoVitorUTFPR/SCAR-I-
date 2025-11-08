@@ -12,7 +12,7 @@ function Avaliacao(){
     const [respostas, setRespostas] = useState(null);
 
     const carregarSimulado = () => {
-        createUsuarioSimulado("671b00000000000000000101", simuladoId).then(
+        createUsuarioSimulado(simuladoId).then(
             (retorno) => {
                 setSimulado(retorno.simulado);
                 setRespostas(retorno.resposta);

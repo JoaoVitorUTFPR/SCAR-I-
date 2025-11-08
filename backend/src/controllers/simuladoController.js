@@ -83,7 +83,7 @@ export const getRelatorio = async (req, res) => {
 
 export const getInfoHome = async (req, res) => {
 	try {
-		const info = await simuladoService.getInfoHome(req.params.id);
+		const info = await simuladoService.getInfoHome(req.usuarioId);
 		res.status(200).json(info);
 	} catch (error) {
 		res.status(500).json({ message: "Erro", error });

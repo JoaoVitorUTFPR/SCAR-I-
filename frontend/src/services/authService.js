@@ -6,7 +6,7 @@ export const fazerLogin = async (loginInfo) => {
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(loginInfo),
 	});
-	data = res.json();
+	let data = res.json();
 	return data;
 };
 

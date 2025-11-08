@@ -36,6 +36,6 @@ router.get(
 	autenticar,
 	simuladoController.getRelatorio
 );
-router.get("/home/:id", autenticar, simuladoController.getInfoHome);
+router.get("/home/", autenticar, simuladoController.getInfoHome);
 
 export default router;

@@ -13,7 +13,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const info = await getInfoHome("671b00000000000000000101");
+        const info = await getInfoHome();
         setTotalSimulados(info.totalSimulados);
         setTotalConcluidos(info.totalConcluidos);
       } catch (error) {

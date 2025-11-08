@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fazerLogin } from "../services/authService";
-import styles from "./login.module.css";
+import styles from "./Login.module.css";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -14,19 +14,22 @@ export const Login = () => {
   const setInfo = (e) => {
     setLoginInfo({
       ...loginInfo,
-      [e.target.name]: e.target.value
+      [e.target.id]: e.target.value
     });
   };
 
-  const efetivarLogin = async (e) => {
-    e.preventDefault();
-    const token = await fazerLogin(loginInfo);
-    if (token) {
-      localStorage.setItem("token", token);
-    
+  
+    const efetivarLogin = async (e) => {
+        e.preventDefault();
+        const data = await fazerLogin(loginInfo)
+        if (data && data.token) {
+            localStorage.setItem("token", data.token);
+            navigate("/")
+        }
+        else {
+            alert("Erro ao fazer login.")
+        }
     }
-  };
-
   const irParaRegistro = () => {
     navigate("/registro");
   };
@@ -37,10 +40,10 @@ export const Login = () => {
         <h1>Login</h1>
 
         <div className={styles["input-box"]}>
-          <input type="email"name="email"placeholder="Usuário"requiredonChange={setInfo}/>
+          <input type="email" id="email" placeholder="Usuário" required onChange={setInfo}/>
         </div>
         <div className={styles["input-box"]}>
-          <input type="password"name="senha"placeholder="Senha"requiredonChange={setInfo}/></div>
+          <input type="password" id="senha" placeholder="Senha" required onChange={setInfo}/></div>
 
         <button type="submit">Login</button>
 
