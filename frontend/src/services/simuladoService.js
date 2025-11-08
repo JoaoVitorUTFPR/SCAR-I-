@@ -54,3 +54,33 @@ export const finalizarSimulado = async (usuarioSimuladoId) => {
 		},
 	}).then((res) => res.json());
 };
+
+export const getRelatorio = async (usuarioSimuladoId) => {
+	let token = localStorage.getItem("token");
+	return fetch(`${API_URL}/usuario_simulado/relatorio/${usuarioSimuladoId}`, {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}).then((res) => res.json());
+};
+
+export const getUsuarioSimulados = async () => {
+	let token = localStorage.getItem("token");
+	return fetch(`${API_URL}/usuario_simulado/buscar`, {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}).then((res) => res.json());
+};
+
+export const getNotaSimulado = async (usuarioSimuladoId) => {
+	let token = localStorage.getItem("token");
+	return fetch(`${API_URL}/usuario_simulado/nota/${usuarioSimuladoId}`, {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}).then((res) => res.json());
+};

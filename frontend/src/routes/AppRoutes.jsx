@@ -5,6 +5,8 @@ import Avaliacao from '../pages/Avaliacao';
 import { Login } from '../pages/Login';
 import { Registro } from '../pages/Registro';
 import { ProtectedRoute } from './ProtectedRoute';
+import Relatorio from '../pages/Relatorio';
+import { Download } from '../pages/Download';
 
 export default function AppRoutes() {
   return (
@@ -14,7 +16,9 @@ export default function AppRoutes() {
         <Route path="/login" element={<Login />} />
 l        <Route element={<ProtectedRoute/>}>
           <Route path="/" element={<Home />} />
+          <Route path="/download" element={<Download />} />
           <Route path="/simulados" element={<Simulados />} />
+          <Route path="/relatorio/:usuarioSimuladoId" element={<Relatorio />} />
           <Route path="/avaliacao/:simuladoId" element={<Avaliacao />} />
         </Route>
       </Routes>
