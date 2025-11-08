@@ -7,7 +7,7 @@
 .cardSimuladoTotal{
   display: flex;
   flex-direction: column;
-  background-color: #f0f9ff;
+  background-color: #def5ff;
   height: 200px;
   width: 350px;
   border-radius: 8px;
@@ -18,7 +18,7 @@
 .cardSimuladoConcluido{
   display: flex;
   flex-direction: column;
-  background-color: #fef6fb;
+  background-color: #def5ff;
   height: 200px;
   width: 350px;
   border-radius: 8px;

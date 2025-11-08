@@ -31,7 +31,7 @@ export const Login = () => {
         }
     }
   const irParaRegistro = () => {
-    navigate("/registro");
+    navigate("/registrar");
   };
 
   return (
