@@ -26,6 +26,12 @@ export const createUsuarioSimulado = async (req, res) => {
 		);
 		res.status(200).json(simulado);
 	} catch (error) {
+		if (error.message.includes("ERRO_01")) {
+			res.status(400).json({
+				message: "Não é possível criar ou continuar avaliação.",
+				error: error.message,
+			});
+		}
 		res.status(500).json({ message: "Erro", error: error.message });
 	}
 };
@@ -84,6 +90,16 @@ export const getRelatorio = async (req, res) => {
 export const getInfoHome = async (req, res) => {
 	try {
 		const info = await simuladoService.getInfoHome(req.usuarioId);
+		res.status(200).json(info);
+	} catch (error) {
+		res.status(500).json({ message: "Erro", error: error.message });
+	}
+};
+
+export const getAvaliacaoAtual = async (req, res) => {
+	try {
+		const info = await simuladoService.getAvaliacaoAtual(req.usuarioId);
+		console.log(info);
 		res.status(200).json(info);
 	} catch (error) {
 		res.status(500).json({ message: "Erro", error: error.message });

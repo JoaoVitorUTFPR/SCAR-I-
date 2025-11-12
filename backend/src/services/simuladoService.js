@@ -20,6 +20,12 @@ export const getSimuladoId = (simuladoId) => {
 };
 
 export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
+	if (!(await _podeComecarAvaliacao(usuarioId, simuladoId))) {
+		throw new Error(
+			"ERRO_01: Finalize a avaliação atual antes de começar outra."
+		);
+	}
+
 	let usuarioSimulado = await prisma.usuario_simulado.findFirst({
 		where: {
 			usuarioId,
@@ -29,7 +35,7 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 			simulado: { include: { questoes: { include: { alternativa: true } } } },
 		},
 	});
-	if (!usuarioSimulado) {
+	if (!usuarioSimulado || usuarioSimulado.dataFim.getDate()) {
 		const simulado = await getSimuladoId(simuladoId);
 		const respostas = simulado.questoes.map((questao) => {
 			return { questaoId: questao.id, alternativaId: null };
@@ -39,7 +45,7 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 			simuladoId,
 			resposta: respostas,
 		};
-		usuarioSimulado = prisma.usuario_simulado.create({
+		usuarioSimulado = await prisma.usuario_simulado.create({
 			data: usuario_simulado,
 			include: {
 				simulado: { include: { questoes: { include: { alternativa: true } } } },
@@ -47,6 +53,29 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 		});
 	}
 	return usuarioSimulado;
+};
+
+export const getAvaliacaoAtual = async (usuarioId) => {
+	console.log(usuarioId);
+	const usuarioSimulado = await prisma.usuario_simulado.findFirst({
+		where: {
+			usuarioId,
+			dataFim: null,
+		},
+	});
+	console.log(usuarioSimulado);
+	return usuarioSimulado;
+};
+
+const _podeComecarAvaliacao = async (usuarioId, simuladoId) => {
+	const usuarioSimulado = await prisma.usuario_simulado.findFirst({
+		where: {
+			usuarioId,
+			dataFim: null,
+		},
+	});
+
+	return !usuarioSimulado || usuarioSimulado.simuladoId == simuladoId;
 };
 
 export const updateAlternativa = async (body) => {
@@ -196,7 +225,7 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 				messages: [{ role: "user", content: objeto.prompt }],
 				host: "http://127.0.0.1:11434",
 			});
-      
+
 			return {
 				questao: objeto.questao,
 				respostaIA,

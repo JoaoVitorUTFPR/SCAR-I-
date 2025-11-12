@@ -37,5 +37,10 @@ router.get(
 	simuladoController.getRelatorio
 );
 router.get("/home/", autenticar, simuladoController.getInfoHome);
+router.get(
+	"/usuario_simulado/avaliacao",
+	autenticar,
+	simuladoController.getAvaliacaoAtual
+);
 
 export default router;
