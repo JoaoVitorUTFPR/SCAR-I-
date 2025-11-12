@@ -34,8 +34,11 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 		include: {
 			simulado: { include: { questoes: { include: { alternativa: true } } } },
 		},
+		orderBy: {
+			dataInicio: 'desc',
+		},
 	});
-	if (!usuarioSimulado || usuarioSimulado.dataFim.getDate()) {
+	if (!usuarioSimulado || usuarioSimulado.dataFim) {
 		const simulado = await getSimuladoId(simuladoId);
 		const respostas = simulado.questoes.map((questao) => {
 			return { questaoId: questao.id, alternativaId: null };
@@ -60,7 +63,9 @@ export const getAvaliacaoAtual = async (usuarioId) => {
 	const usuarioSimulado = await prisma.usuario_simulado.findFirst({
 		where: {
 			usuarioId,
-			dataFim: null,
+			dataFim: {
+				isSet: false,
+			},
 		},
 	});
 	console.log(usuarioSimulado);
@@ -71,7 +76,9 @@ const _podeComecarAvaliacao = async (usuarioId, simuladoId) => {
 	const usuarioSimulado = await prisma.usuario_simulado.findFirst({
 		where: {
 			usuarioId,
-			dataFim: null,
+			dataFim: {
+				isSet: false,
+			},
 		},
 	});
 
