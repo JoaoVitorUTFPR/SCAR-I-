@@ -49,6 +49,10 @@
     color: white;
 }
 
+.box2 button:hover .icon{
+    filter: invert(1)
+}
+
 .box2 button span{
     display: flex;
     flex-direction: row;
@@ -61,6 +65,7 @@
     display: flex;
     align-items: center;
     font-size: 1.4rem;
+    height: 1.4rem;
     justify-content: center;
 }
 
@@ -76,7 +81,7 @@
 }
 
 .imagem{
-    width: 350px;
+    width: 400px;
     height: auto;
     position: absolute;
     bottom: 0;

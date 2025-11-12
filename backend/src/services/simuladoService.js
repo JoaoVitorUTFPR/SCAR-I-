@@ -183,20 +183,20 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 	const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 	const resultado = await Promise.all(
 		promptPorQuestao.map(async (objeto) => {
+			/*
 			const respostaIA = (
 				await ai.models.generateContent({
 					model: "gemini-2.5-flash",
 					contents: objeto.prompt,
 				})
 			).candidates[0].content.parts[0].text;
-
-			/*
+			*/
 			const respostaIA = await ollama.chat({
 				model: "phi3",
 				messages: [{ role: "user", content: objeto.prompt }],
 				host: "http://127.0.0.1:11434",
 			});
-      */
+      
 			return {
 				questao: objeto.questao,
 				respostaIA,

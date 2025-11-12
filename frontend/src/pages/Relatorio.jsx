@@ -3,6 +3,7 @@ import styles from './Relatorio.module.css';
 import { getRelatorio } from '../services/simuladoService';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const Relatorio = () => {
   const usuarioSimuladoId = useParams().usuarioSimuladoId;
@@ -20,7 +21,7 @@ const Relatorio = () => {
 
   useEffect(() => {
     if (relatorioData) {
-      window.print();
+      setTimeout(()=> window.print(), 500)
     }
   }, [relatorioData]);
 
@@ -41,7 +42,7 @@ const Relatorio = () => {
       {relatorioData ? (
         <>
           <header>
-            <img src="../assets/logo.png" alt="Logo UTFPR" className={styles.logo} />
+            <img src={logo} alt="Logo UTFPR" className={styles.logo} />
             <div className={styles.info}>
               <p><strong>Nome:</strong>{relatorioData?.nomeUsuario}</p>
               <p><strong>Simulado:</strong> {relatorioData?.nomeSimulado}</p>

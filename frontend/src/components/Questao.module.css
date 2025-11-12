@@ -1,0 +1,76 @@
+.questaoCard {
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 24px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.questaoCard:hover {
+  transform: translateY(-2px);
+}
+
+.header {
+  margin-bottom: 8px;
+}
+
+.numero {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2a2a;
+  border-left: 5px solid #4ed0ff;
+  padding-left: 10px;
+}
+
+.enunciado {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.alternativas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alternativa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.alternativa:hover {
+  background-color: #f5f7ff;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  accent-color: #4a6ee0;
+  cursor: pointer;
+}
+
+.letra {
+  font-weight: 600;
+  color: #4a6ee0;
+  width: 22px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.texto {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.4;
+  flex: 1;
+}

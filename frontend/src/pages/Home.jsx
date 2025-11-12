@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { getInfoHome } from '../services/simuladoService';
 import styles from './Home.module.css'; 
 import Sidebar from '../components/Sidebar';
-import { PiStudent } from "react-icons/pi";
-import { PiCertificateLight } from "react-icons/pi";
+import simuladosIcon from '../assets/simuladosIcon.svg';
+import avaliacaoIcon from '../assets/avaliacaoIcon.svg';
 /* import { getAvaliacoes } from '../services/simuladoService'; */
 
 function Home() {
@@ -31,7 +31,7 @@ function Home() {
         <div className={styles.linhacont}>
           <div className={styles.cardSimuladoTotal}>
             <div>
-              <i className={styles.iconConcluido}><PiCertificateLight /></i>
+              <img src={simuladosIcon} alt="" className={styles.iconTotal}/>
             </div>
             <div className={styles.text}>
               <p>Total de simulados</p>
@@ -43,7 +43,7 @@ function Home() {
 
           <div className={styles.cardSimuladoConcluido}>
             <div>
-              <i className={styles.iconConcluido}><PiStudent /></i>
+              <img src={avaliacaoIcon} alt="" className={styles.iconConcluido}/>
             </div>
             <div className={styles.text}>
               <p>Simulados concluídos</p>

@@ -60,13 +60,13 @@
 .iconTotal{
   font-size: 60px;
   color: #74c1ed;
-  margin-top: 100px;
+  height: 60px;
   margin-left: 30px;
 }
 
 .iconConcluido{
   font-size: 60px;
+  height: 60px;
   color: #ee95c5;
-  margin-top: 150px;
   margin-left: 30px;
 }

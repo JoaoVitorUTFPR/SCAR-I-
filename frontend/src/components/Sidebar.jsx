@@ -1,11 +1,10 @@
 import styles from './Sidebar.module.css'; 
-import homeIcon from '../assets/homeIcon.png';
-import simuladosIcon from '../assets/simuladosIcon.png';
-import avaliacaoIcon from '../assets/avaliacaoIcon.png';
-import downloadIcon from '../assets/downloadIcon.png';
+import homeIcon from '../assets/homeIcon.svg';
+import simuladosIcon from '../assets/simuladosIcon.svg';
+import avaliacaoIcon from '../assets/avaliacaoIcon.svg';
+import downloadIcon from '../assets/downloadIcon.svg';
 import ellp from '../assets/ellp.png'
 import { NavLink } from 'react-router-dom';
-import { PiCertificateLight, PiFilePdf, PiHouse, PiStudent } from 'react-icons/pi';
 
 function Alunos() {
 
@@ -21,7 +20,7 @@ function Alunos() {
                 <NavLink to="/" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
-                            <i className={styles.icon}><PiHouse /></i>
+                            <img src={homeIcon} alt="" className={styles.icon}/>
                             <span className={styles.option}>Home</span>
                         </span>
                     </button>
@@ -29,7 +28,7 @@ function Alunos() {
                 <NavLink to="/simulados" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
-                            <i className={styles.icon}><PiCertificateLight /></i>
+                            <img src={simuladosIcon} alt="" className={styles.icon}/>
                             <span className={styles.option}>Simulados</span>
                         </span>
                     </button>
@@ -37,7 +36,7 @@ function Alunos() {
                 <NavLink to="/avaliacao" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> 
                     <button>
                         <span>
-                            <i className={styles.icon}><PiStudent /></i>
+                            <img src={avaliacaoIcon} alt="" className={styles.icon}/>
                             <span className={styles.option}>Avaliações</span>
                         </span>
                     </button>
@@ -45,7 +44,7 @@ function Alunos() {
                 <NavLink to="/download" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
                     <button>
                         <span>
-                            <i className={styles.icon}><PiFilePdf /></i>
+                            <img src={downloadIcon} alt="" className={styles.icon}/>
                             <span className={styles.option}>Download</span>
                         </span>
                     </button>

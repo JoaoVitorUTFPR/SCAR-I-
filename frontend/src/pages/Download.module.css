@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  height: 90svh;
+  height: 90vh;
 }
 
 .content {
