@@ -12,35 +12,36 @@ function Avaliacao() {
   const [simulado, setSimulado] = useState(null);
   const [respostas, setRespostas] = useState([]);
 
-const carregarSimulado = () => {
-    if(simuladoId) {
-
-      createUsuarioSimulado(simuladoId).then((retorno) => {
-        setSimulado(retorno.simulado);
-        setRespostas(retorno.resposta || []);
-        setUsuarioSimuladoId(retorno.id);
-      });
-
-    }
-    else {
-      getAvaliacaoAtual().then((retorno) => {
-        setSimulado(retorno.simulado);
-        setRespostas(retorno.resposta || []);
-        setUsuarioSimuladoId(retorno.id);
-      });
-    }
-  };
-
   const efetivarFinalizarSimulado = () => {
     finalizarSimulado(usuarioSimuladoId).then(
       (dados) => {
-          navigate("/download")
+        navigate("/download")
       }
     );
   }
+
   useEffect(() => {
+    const carregarSimulado = () => {
+      if (simuladoId) {
+
+        createUsuarioSimulado(simuladoId).then((retorno) => {
+          setSimulado(retorno.simulado);
+          setRespostas(retorno.resposta || []);
+          setUsuarioSimuladoId(retorno.id);
+        });
+
+      }
+      else {
+        getAvaliacaoAtual().then((retorno) => {
+          setSimulado(retorno.simulado);
+          setRespostas(retorno.resposta || []);
+          setUsuarioSimuladoId(retorno.id);
+        });
+      }
+    };
+
     carregarSimulado();
-  }, []);
+  }, [simuladoId]);
 
   if (!simulado) {
     return (

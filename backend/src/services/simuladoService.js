@@ -35,7 +35,7 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 			simulado: { include: { questoes: { include: { alternativa: true } } } },
 		},
 		orderBy: {
-			dataInicio: 'desc',
+			dataInicio: "desc",
 		},
 	});
 	if (!usuarioSimulado || usuarioSimulado.dataFim) {
@@ -59,7 +59,6 @@ export const createUsuarioSimulado = async (usuarioId, simuladoId) => {
 };
 
 export const getAvaliacaoAtual = async (usuarioId) => {
-	console.log(usuarioId);
 	const usuarioSimulado = await prisma.usuario_simulado.findFirst({
 		where: {
 			usuarioId,
@@ -71,7 +70,6 @@ export const getAvaliacaoAtual = async (usuarioId) => {
 			simulado: { include: { questoes: { include: { alternativa: true } } } },
 		},
 	});
-	console.log(usuarioSimulado);
 	return usuarioSimulado;
 };
 
@@ -172,7 +170,7 @@ const _calcularNota = async (questoes, respostasUsuario) => {
 	for (const questao of questoes) {
 		const resposta = respostasUsuario.find((r) => r.questaoId === questao.id);
 		const alternativaCorreta = questao.alternativa.find(
-			(a) => a.correta === true
+			(a) => a.isCorreta === true
 		);
 
 		if (
@@ -213,28 +211,31 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 			(r) => r.questaoId === questao.id
 		);
 		const corretaCorpo = questao.alternativa.find((a) => a.isCorreta === true);
-		const usuarioEscolha = questao.alternativa.find(
+		let usuarioEscolha = questao.alternativa.find(
 			(a) => a.id === respostaUsuario.alternativaId
-		).corpo;
-		const prompt = getPrompt(questao, corretaCorpo, usuarioEscolha);
+		);
+		if (!usuarioEscolha) {
+			usuarioEscolha = { corpo: "NÃO RESPONDIDA" };
+		}
+		const prompt = getPrompt(questao, corretaCorpo, usuarioEscolha.corpo);
 		return { questao, prompt, respostaUsuario };
 	});
 	const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 	const resultado = await Promise.all(
 		promptPorQuestao.map(async (objeto) => {
-			/*
 			const respostaIA = (
 				await ai.models.generateContent({
 					model: "gemini-2.5-flash",
 					contents: objeto.prompt,
 				})
 			).candidates[0].content.parts[0].text;
-			*/
+			/*
 			const respostaIA = await ollama.chat({
 				model: "phi3",
 				messages: [{ role: "user", content: objeto.prompt }],
 				host: "http://127.0.0.1:11434",
 			});
+			*/
 
 			return {
 				questao: objeto.questao,
@@ -264,7 +265,7 @@ export const getInfoHome = async (id) => {
 				not: null,
 			},
 		},
-		distinct: ['simuladoId']
+		distinct: ["simuladoId"],
 	});
 	return { totalSimulados, totalConcluidos: totalConcluidos.length };
 };

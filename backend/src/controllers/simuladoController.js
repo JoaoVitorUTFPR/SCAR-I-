@@ -83,7 +83,7 @@ export const getRelatorio = async (req, res) => {
 		);
 		res.status(200).json(relatorio);
 	} catch (error) {
-		res.status(500).json({ message: "Erro", error: error.message });
+		res.status(500).json({ message: error.message, error: error.stack });
 	}
 };
 
@@ -99,7 +99,6 @@ export const getInfoHome = async (req, res) => {
 export const getAvaliacaoAtual = async (req, res) => {
 	try {
 		const info = await simuladoService.getAvaliacaoAtual(req.usuarioId);
-		console.log(info);
 		res.status(200).json(info);
 	} catch (error) {
 		res.status(500).json({ message: "Erro", error: error.message });

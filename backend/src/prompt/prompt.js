@@ -18,7 +18,7 @@ Sua tarefa é:
 ${questao.corpo}
 
 ## Alternativas
-${questao.alternativa.map((a) => `${a.id} - ${a.corpo}`).join("\n")}
+${questao.alternativa.map((a) => `${a.corpo}`).join("\n")}
 
 Alternativa Correta: ${corretaCorpo}  
 Alternativa Escolhida: ${usuarioEscolha}
