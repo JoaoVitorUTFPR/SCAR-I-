@@ -20,6 +20,7 @@ l        <Route element={<ProtectedRoute/>}>
           <Route path="/simulados" element={<Simulados />} />
           <Route path="/relatorio/:usuarioSimuladoId" element={<Relatorio />} />
           <Route path="/avaliacao/:simuladoId" element={<Avaliacao />} />
+          <Route path="/avaliacao" element={<Avaliacao />} />
         </Route>
       </Routes>
     </BrowserRouter>

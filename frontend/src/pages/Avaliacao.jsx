@@ -1,24 +1,43 @@
 import styles from "./Avaliacao.module.css";
 import Sidebar from "../components/Sidebar";
-import { createUsuarioSimulado, finalizarSimulado } from "../services/simuladoService";
+import { createUsuarioSimulado, finalizarSimulado, getAvaliacaoAtual } from "../services/simuladoService";
 import { useEffect, useState } from "react";
 import Questao from "../components/Questao";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Avaliacao() {
   const { simuladoId } = useParams();
+  const navigate = useNavigate();
   const [usuarioSimuladoId, setUsuarioSimuladoId] = useState(null);
   const [simulado, setSimulado] = useState(null);
   const [respostas, setRespostas] = useState([]);
 
-  const carregarSimulado = () => {
-    createUsuarioSimulado(simuladoId).then((retorno) => {
-      setSimulado(retorno.simulado);
-      setRespostas(retorno.resposta || []);
-      setUsuarioSimuladoId(retorno.id);
-    });
+const carregarSimulado = () => {
+    if(simuladoId) {
+
+      createUsuarioSimulado(simuladoId).then((retorno) => {
+        setSimulado(retorno.simulado);
+        setRespostas(retorno.resposta || []);
+        setUsuarioSimuladoId(retorno.id);
+      });
+
+    }
+    else {
+      getAvaliacaoAtual().then((retorno) => {
+        setSimulado(retorno.simulado);
+        setRespostas(retorno.resposta || []);
+        setUsuarioSimuladoId(retorno.id);
+      });
+    }
   };
 
+  const efetivarFinalizarSimulado = () => {
+    finalizarSimulado(usuarioSimuladoId).then(
+      (dados) => {
+          navigate("/download")
+      }
+    );
+  }
   useEffect(() => {
     carregarSimulado();
   }, []);
@@ -51,7 +70,7 @@ function Avaliacao() {
           ))}
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.finalizarBtn} onClick={() => finalizarSimulado(usuarioSimuladoId)}>
+          <button className={styles.finalizarBtn} onClick={efetivarFinalizarSimulado}>
             Finalizar Simulado
           </button>
         </div>

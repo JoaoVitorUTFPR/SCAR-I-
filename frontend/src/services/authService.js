@@ -20,3 +20,13 @@ export const fazerRegistro = async (registroInfo) => {
 	data = res.json();
 	return data;
 };
+
+export const validarToken = async () =>{
+	const token = localStorage.getItem("token");
+	const res = await fetch(`${API_URL}/validar-token`, {
+		headers: { "Authorization": "Bearer " + token}
+	});
+
+	return res.json();
+
+}

@@ -84,3 +84,12 @@ export const getNotaSimulado = async (usuarioSimuladoId) => {
 		},
 	}).then((res) => res.json());
 };
+export const getAvaliacaoAtual = async () => {
+	let token = localStorage.getItem("token");
+	return fetch(`${API_URL}/usuario_simulado/avaliacao`, {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}).then((res) => res.json());
+}

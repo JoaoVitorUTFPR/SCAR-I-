@@ -6,7 +6,7 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({methods: ["GET", "POST", "PUT", "PATCH", "OPTIONS"]}));
 app.use(express.json());
 
 // Rotas

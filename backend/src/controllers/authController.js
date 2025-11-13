@@ -25,3 +25,7 @@ export const login = async (req, res) => {
 			.json({ message: "Erro ao fazer login", error: error.message });
 	}
 };
+
+export const validarToken = async (req, res) => { 
+	return res.status(200).json(true);
+}

@@ -67,6 +67,9 @@ export const getAvaliacaoAtual = async (usuarioId) => {
 				isSet: false,
 			},
 		},
+		include: {
+			simulado: { include: { questoes: { include: { alternativa: true } } } },
+		},
 	});
 	console.log(usuarioSimulado);
 	return usuarioSimulado;
@@ -254,13 +257,14 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 
 export const getInfoHome = async (id) => {
 	const totalSimulados = await prisma.simulado.count();
-	const totalConcluidos = await prisma.usuario_simulado.count({
+	const totalConcluidos = await prisma.usuario_simulado.findMany({
 		where: {
 			usuarioId: id,
 			dataFim: {
 				not: null,
 			},
 		},
+		distinct: ['simuladoId']
 	});
-	return { totalSimulados, totalConcluidos };
+	return { totalSimulados, totalConcluidos: totalConcluidos.length };
 };
