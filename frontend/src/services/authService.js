@@ -11,14 +11,11 @@ export const fazerLogin = async (loginInfo) => {
 };
 
 export const fazerRegistro = async (registroInfo) => {
-	const res = await fetch(`${API_URL}/registrar`, {
+	return fetch(`${API_URL}/registrar`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(registroInfo),
-	});
-
-	data = res.json();
-	return data;
+	}).then(res => res.json())
 };
 
 export const validarToken = async () =>{

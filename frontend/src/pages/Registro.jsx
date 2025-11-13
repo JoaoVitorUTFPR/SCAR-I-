@@ -21,10 +21,11 @@ export const Registro = () => {
 
   const efetivarRegistro = async (e) => {
     e.preventDefault();
-    const usuario = await fazerRegistro(registroInfo);
-    if (usuario) {
-      navigate("/login");
-    }
+    fazerRegistro(registroInfo).then(
+      (res) => {
+        navigate("/login")
+      }
+    )
   };
 
   return (
