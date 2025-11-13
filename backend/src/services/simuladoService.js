@@ -223,27 +223,28 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 		const prompt = getPrompt(questao, corretaCorpo.corpo, usuarioEscolha.corpo);
 		return { questao, prompt, respostaUsuario };
 	});
-	//const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+	const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 	const resultado = await Promise.all(
 		promptPorQuestao.map(async (objeto, index) => {
-			/*
 			const respostaIA = (
 				await ai.models.generateContent({
-					model: "gemini-2.5-flash",
+					model: "gemini-2.0-flash-lite",
 					contents: objeto.prompt,
-				})
-			).candidates[0].content.parts[0].text;
-			*/
-			const respostaIA = await ollama.chat({
-				model: "llama3.2",
+					})
+					).candidates[0].content.parts[0].text;
+					/*
+					const respostaIA = await ollama.chat({
+						model: "phi3",
 				messages: [{ role: "user", content: objeto.prompt }],
 				host: "http://127.0.0.1:11434",
 			});
+			*/
 			console.log("Gerou " + parseInt(index + 1));
 
 			return {
 				questao: objeto.questao,
-				respostaIA: respostaIA.message.content,
+				//respostaIA: respostaIA.message.content, para o Ollama
+				respostaIA: respostaIA,
 				respostaUsuario: objeto.respostaUsuario,
 			};
 		})
