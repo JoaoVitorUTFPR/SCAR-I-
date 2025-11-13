@@ -24,7 +24,7 @@ Alternativa Correta: ${corretaCorpo}
 Alternativa Escolhida: ${usuarioEscolha}
 
 # Exemplo de Resposta Esperada 
-**Explicação:** O enunciado aborda [tema principal], e a resposta correta é a letra [corretaId] pois [justificativa da resposta correta].  
+**Explicação:** O enunciado aborda [tema principal], e a resposta correta é a [descrição da alternativas] pois [justificativa da resposta correta].  
 **Recomendações de Estudo:**  
 - Revisar o conteúdo de [assunto relacionado];  
 - Ler o capítulo sobre [tema] no livro [referência];  

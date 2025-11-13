@@ -132,6 +132,9 @@ export const getSimuladosUsuario = async (usuarioId) => {
 				},
 			},
 		},
+		orderBy: {
+			dataFim: "desc",
+		},
 	});
 };
 
@@ -217,12 +220,12 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 		if (!usuarioEscolha) {
 			usuarioEscolha = { corpo: "NÃO RESPONDIDA" };
 		}
-		const prompt = getPrompt(questao, corretaCorpo, usuarioEscolha.corpo);
+		const prompt = getPrompt(questao, corretaCorpo.corpo, usuarioEscolha.corpo);
 		return { questao, prompt, respostaUsuario };
 	});
-	const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+	//const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 	const resultado = await Promise.all(
-		promptPorQuestao.map(async (objeto) => {
+		promptPorQuestao.map(async (objeto, index) => {
 			/*
 			const respostaIA = (
 				await ai.models.generateContent({
@@ -230,17 +233,17 @@ export const getRelatorio = async (usuarioSimuladoId) => {
 					contents: objeto.prompt,
 				})
 			).candidates[0].content.parts[0].text;
-			
+			*/
 			const respostaIA = await ollama.chat({
-				model: "phi3",
+				model: "llama3.2",
 				messages: [{ role: "user", content: objeto.prompt }],
 				host: "http://127.0.0.1:11434",
 			});
-			*/
+			console.log("Gerou " + parseInt(index + 1));
 
 			return {
 				questao: objeto.questao,
-				respostaIA,
+				respostaIA: respostaIA.message.content,
 				respostaUsuario: objeto.respostaUsuario,
 			};
 		})
